@@ -1,0 +1,22 @@
+version: '3'
+services:
+  user-api:
+      build: .
+        # Only will build development stage from our dockerfile
+      volumes:
+        - .:/home/node/app
+        - "/etc/timezone:/etc/timezone"
+        - "/etc/localtime:/etc/localtime"
+      # Run a command against the development stage of the image
+      container_name: userApi
+      restart: always
+      tty: true
+      #environment: 
+      #  - CHOKIDAR_USEPOLLING=true
+      entrypoint: ./entrypoint/entrypoint.sh
+          
+      ports: 
+        - 3000:3000
+      # expose:
+      #   - 3000   
+    
