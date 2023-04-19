@@ -6,6 +6,8 @@ FROM node:18-alpine
 
 # Create app directory
 WORKDIR /home/node/app
+COPY ./  /home/node/app
+RUN  CD /home/node/app
 
 # Copy application dependency manifests to the container image.
 # A wildcard is used to ensure copying both package.json AND package-lock.json (when available).
@@ -19,6 +21,7 @@ RUN apk add --no-cache bash
 RUN apk add --no-cache nano
 ENV TZ="America/Recife"
 RUN npm i -g @nestjs/cli@8.0.0
+RUN npm run start:dev
 # Bundle app source
 # COPY --chown=node:node . .
 # Use the node user from the image (instead of the root user)
