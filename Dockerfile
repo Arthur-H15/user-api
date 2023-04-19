@@ -7,7 +7,7 @@ FROM node:18-alpine
 # Create app directory
 WORKDIR /home/node/app
 COPY ./  /home/node/app
-RUN  CD /home/node/app
+RUN  cd /home/node/app
 
 # Copy application dependency manifests to the container image.
 # A wildcard is used to ensure copying both package.json AND package-lock.json (when available).
