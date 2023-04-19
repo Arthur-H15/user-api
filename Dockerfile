@@ -23,7 +23,7 @@ ENV TZ="America/Recife"
 RUN npm i -g @nestjs/cli@8.0.0
 RUN npm i
 RUN npm run start:dev
-EXPOSE 3001
+EXPOSE 80
 # Bundle app source
 # COPY --chown=node:node . .
 # Use the node user from the image (instead of the root user)
