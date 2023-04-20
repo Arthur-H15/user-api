@@ -1,5 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AppService } from './app.service';
+import {UserDtoValidacao} from './objetos/userDtoValidacao'
+
+
 
 @Controller()
 export class AppController {
@@ -9,4 +12,11 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+  @Post()
+  @UsePipes(new ValidationPipe())
+  create(@Body() user: UserDtoValidacao) {
+    // Your create method logic
+  }
 }
+
+
