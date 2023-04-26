@@ -1,5 +1,6 @@
 import { Transform } from "class-transformer";
-import { IsEmail, IsString, Matches, MinLength } from "class-validator";
+import { IsDate, IsEmail, IsEmpty, IsNumber, IsString, Matches, MinLength } from "class-validator";
+import { pick } from 'lodash';
 
 export class UserDtoValidacao {
     @IsString({
@@ -19,8 +20,19 @@ export class UserDtoValidacao {
     senha: string;
     @IsString()
     @Matches(/^\d{11}$/, {
-    message: 'O número de telefone deve ter exatamente 11 dígitos e não deve conter letras',
-  })
+        message: 'O número de telefone deve ter exatamente 11 dígitos e não deve conter letras',
+    })
     numero: string;
+    
+    // public pickFields(): UserDtoValidacao {
+    //     const expectedFields = {
+    //       nome: true,
+    //       email: true,
+    //       senha: true,
+    //       numero: true,
+    //     };
+
+    //     return pick(this, Object.keys(expectedFields)) as UserDtoValidacao;
+    //   }
 
 }
