@@ -7,6 +7,7 @@ import { Usuarios } from './entities/Usuarios';
 
 @Module({
   imports: [
+    
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql', // Tipo de banco de dados
