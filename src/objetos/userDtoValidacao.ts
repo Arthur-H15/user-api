@@ -23,6 +23,8 @@ export class UserDtoValidacao {
         message: 'O número de telefone deve ter exatamente 11 dígitos e não deve conter letras',
     })
     numero: string;
+
+
     
     // public pickFields(): UserDtoValidacao {
     //     const expectedFields = {

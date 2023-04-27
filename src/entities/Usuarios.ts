@@ -7,6 +7,8 @@ export class Usuarios {
 
   @Column('varchar', { name: 'nome', length: 45 })
   nome: string;
+  @Column('varchar', { name: 'senha', length: 120})
+  senha: string;
 
   @Column('varchar', { name: 'email', length: 45 })
   email: string;
