@@ -1,17 +1,8 @@
-version: '3'
 services:
-   app:
-    build: .
-    container_name: mindi-App2
-    deploy:
-      resources:
-        limits:
-          memory: 8g
-          cpus: '4.0'
-    restart: always
-    tty: true
-    entrypoint: ./docker/entrypoint.sh
+  - name: app
+    buildCommand: docker build -t my-app .
+    startCommand: docker run --name my-app -p 3001:3001 -v $(pwd):/home/node/app my-app
+    env:
+      - CHOKIDAR_USEPOLLING=true
     ports:
       - 3001:3001
-    volumes:
-      - .:/home/node/app
