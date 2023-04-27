@@ -1,24 +1,17 @@
-version: '3.7'
-
+version: '3'
 services:
-  web:
-    dockerfile: Dockerfile
-    command: ./entrypoint/entrypoint.sh
-    # env:
-    #   NODE_ENV: production
+  app:
+    build: .
+    container_name: mindi-App2
+    deploy:
+      resources:
+        limits:
+          memory: 8g
+          cpus: '4.0'
+    restart: always
+    tty: true
+    entrypoint: ./docker/entrypoint.sh
     ports:
-      - 3000:3000
+      - 3001:3001
     volumes:
-      - type: bind
-        source: ./
-        target: /home
-    # healthCheck:
-    #   path: /health-check
-    #   interval: 30s
-
-    # deploy:
-    #   name: user-apiteste
-    #   region: your_region
-    #   instanceType: Starter
-    #   automaticCert: true
-    #   env: prod
+      - .:/home/node/app
