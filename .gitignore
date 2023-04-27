@@ -2,6 +2,7 @@
 /dist
 /node_modules
 /mysql
+./package-lock.json
 
 # Logs
 logs
