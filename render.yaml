@@ -1,24 +1,6 @@
-version: '3.7'
-
 services:
-  web:
-    dockerfile: Dockerfile
-    command: ./entrypoint/entrypoint.sh
-    # env:
-    #   NODE_ENV: production
-    ports:
-      - 3000:3000
-    volumes:
-      - type: bind
-        source: ./
-        target: /home
-    # healthCheck:
-    #   path: /health-check
-    #   interval: 30s
-
-    # deploy:
-    #   name: user-apiteste
-    #   region: your_region
-    #   instanceType: Starter
-    #   automaticCert: true
-    #   env: prod
+  - name: app
+    type: web
+    buildCommand: docker build -t my-app .
+    startCommand: docker run --name my-app -p 3001:3001 -v $(pwd):/home/node/app my-app
+    
